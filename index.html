@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Website character set -->
+    <meta charset="UTF-8">
+
+    <!-- Mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Website title -->
+    <title>Fazal Abbas | Frontend Developer</title>
+    <!-- SEO Meta Tags -->
+
+    <meta name="description"
+        content="Fazal Abbas — Beginner frontend developer from Karachi building responsive UI systems, dashboards, automation tools, and real-world frontend projects.">
+
+    <meta name="keywords"
+        content="Fazal Abbas, frontend developer, HTML, CSS, JavaScript, Bootstrap, jQuery, portfolio">
+
+    <meta name="author" content="Fazal Abbas">
+
+    <!-- Open Graph -->
+
+    <meta property="og:title" content="Fazal Abbas Portfolio">
+
+    <meta property="og:description"
+        content="Frontend developer portfolio featuring responsive UI projects, dashboards, Bootstrap systems, and JavaScript applications.">
+
+    <meta property="og:image" content="images/portfolio-preview.png">
+
+    <meta property="og:url" content="https://fazal-abbas-portfolio.web.app">
+
+    <meta property="og:type" content="website">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Syne:wght@400;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="portfolio-styles.css">
+
+</head>
+
+<body>
+
+    <!-- Scroll progress bar -->
+
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+    <!-- Page loader -->
+
+    <div class="page-loader" id="pageLoader">
+
+        <h1 class="loader-text">
+            FAZAL
+        </h1>
+
+    </div>
+
+    <!-- Open to work banner -->
+
+    <div class="hiring-banner" id="hiringBanner">
+
+        <p class="banner-text">
+            OPEN TO INTERNSHIPS · FREELANCE · JUNIOR FRONTEND WORK
+        </p>
+
+        <div>
+
+            <a href="#contact" class="banner-link">
+                Contact Me
+            </a>
+
+            <button class="banner-close-btn" id="closeBannerBtn">
+                ×
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+
+        <div class="container">
+
+            <!-- Logo -->
+
+            <a class="logo-text" href="#home">
+                FAZAL//
+            </a>
+
+            <!-- Mobile toggle -->
+
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#portfolioNavbar">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <!-- Navbar content -->
+
+            <div class="collapse navbar-collapse" id="portfolioNavbar">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link" href="#home">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link" href="#about">
+                            About
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link" href="#work">
+                            Work
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link" href="#skills">
+                            Skills
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link" href="#contact">
+                            Contact
+                        </a>
+                    </li>
+
+                    <!-- GitHub -->
+
+                    <li class="nav-item social-icon-item">
+
+                        <a href="https://github.com/fazal305" target="_blank" rel="noopener noreferrer"
+                            class="social-icon-link">
+
+                            <i class="bi bi-github"></i>
+
+                        </a>
+
+                    </li>
+
+                    <!-- LinkedIn -->
+
+                    <li class="nav-item social-icon-item">
+
+                        <a href="https://www.linkedin.com/in/fazal-abbas-4653dg86" target="_blank"
+                            rel="noopener noreferrer" class="social-icon-link">
+
+                            <i class="bi bi-linkedin"></i>
+
+                        </a>
+
+                    </li>
+
+                    <!-- Hire button -->
+
+                    <li class="nav-item">
+
+                        <a href="#contact" class="hire-btn">
+                            Hire Me
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- Main website -->
+
+    <main>
+
+        <!-- Hero Section -->
+
+        <section class="hero-section reveal-section" id="home">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <!-- Background text -->
+
+                    <h1 class="hero-bg-number">
+                        2026
+                    </h1>
+
+                    <!-- Small label -->
+
+                    <p class="hero-label">
+                        FRONTEND DEVELOPER · SOFTWARE ENGINEERING STUDENT
+                    </p>
+
+                    <!-- Main heading -->
+
+                    <h1 class="hero-title">
+                        FAZAL <br>
+                        ABBAS
+                    </h1>
+
+                    <!-- Subtitle -->
+
+                    <h2 class="hero-subtitle">
+
+                        Building real projects while learning to become a
+
+                        <span id="typewriterText">
+                            Frontend Developer
+                        </span>
+
+                    </h2>
+
+                    <!-- Bio -->
+
+                    <p class="hero-bio">
+
+                        Beginner frontend developer from Karachi, Pakistan focused on responsive UI systems, dashboards,
+                        automation tools, and logic-driven software projects.
+
+                    </p>
+
+                    <!-- Buttons -->
+
+                    <div class="hero-buttons">
+
+                        <a href="#work" class="primary-btn">
+                            View Projects
+                        </a>
+
+                        <a href="#contact" class="secondary-btn">
+                            Contact Me
+                        </a>
+
+                    </div>
+
+                    <!-- Social links -->
+
+                    <div class="hero-socials">
+
+                        <a href="https://github.com/fazal305" target="_blank">
+                            GitHub
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/fazal-abbas-4653dg86" target="_blank">
+                            LinkedIn
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Scroll badge -->
+
+            <div class="scroll-badge">
+
+                <span>
+                    SCROLL · TO · EXPLORE
+                </span>
+
+            </div>
+
+        </section>
+
+        <!-- About Section -->
+
+        <section class="about-section reveal-section" id="about">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        01 · ABOUT
+                    </p>
+
+                    <h2 class="section-title">
+                        Learning by building real systems.
+                    </h2>
+
+                </div>
+
+                <div class="row align-items-center g-5">
+
+                    <!-- Left image -->
+
+                    <div class="col-lg-5">
+
+                        <div class="about-image-wrap">
+
+                            <img src="images/fazal-profile.jpg" alt="Fazal Abbas" class="about-image" loading="lazy">
+
+                        </div>
+
+                    </div>
+
+                    <!-- Right content -->
+
+                    <div class="col-lg-7">
+
+                        <div class="about-content">
+
+                            <p>
+
+                                I am a Software Engineering student and beginner frontend developer who enjoys learning
+                                through practical implementation instead of only tutorials.
+
+                            </p>
+
+                            <p>
+
+                                My current focus is building responsive websites, dashboards, automation tools,
+                                educational systems, and structured UI projects using HTML, CSS, JavaScript, Bootstrap,
+                                jQuery, Firebase, and VB.NET.
+
+                            </p>
+
+                            <!-- Stats -->
+
+                            <div class="stats-row">
+
+                                <div class="stat-box">
+
+                                    <h3 class="counter" data-target="15">
+                                        0
+                                    </h3>
+
+                                    <p>
+                                        Projects Built
+                                    </p>
+
+                                </div>
+
+                                <div class="stat-box">
+
+                                    <h3 class="counter" data-target="5">
+                                        0
+                                    </h3>
+
+                                    <p>
+                                        Technologies Used
+                                    </p>
+
+                                </div>
+
+                                <div class="stat-box">
+
+                                    <h3 class="counter" data-target="100">
+                                        0
+                                    </h3>
+
+                                    <p>
+                                        Learning by Building
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Skills -->
+
+                            <div class="skill-pills">
+
+                                <span class="custom-badge">
+                                    HTML5
+                                </span>
+
+                                <span class="custom-badge">
+                                    CSS3
+                                </span>
+
+                                <span class="custom-badge">
+                                    JavaScript
+                                </span>
+
+                                <span class="custom-badge">
+                                    Bootstrap 5
+                                </span>
+
+                                <span class="custom-badge">
+                                    jQuery
+                                </span>
+
+                                <span class="custom-badge">
+                                    VB.NET
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Projects Section -->
+
+        <section class="projects-section reveal-section" id="work">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        02 · PROJECTS
+                    </p>
+
+                    <h2 class="section-title">
+                        Frontend & UI Projects
+                    </h2>
+
+                </div>
+
+                <!-- Filter buttons -->
+
+                <div class="filter-buttons">
+
+                    <button class="filter-btn active-filter" data-filter="all">
+                        All
+                    </button>
+
+                    <button class="filter-btn" data-filter="javascript">
+                        JavaScript
+                    </button>
+
+                    <button class="filter-btn" data-filter="bootstrap">
+                        Bootstrap
+                    </button>
+
+                    <button class="filter-btn" data-filter="ui">
+                        UI Design
+                    </button>
+
+                </div>
+
+                <!-- Project cards -->
+
+                <div class="row g-4">
+
+                    <!-- Project 1 -->
+
+                    <div class="col-lg-6 project-item" data-category="javascript ui">
+
+                        <article class="project-card">
+
+                            <div class="project-image">
+
+                                <img src="images/survey-form-ui.png" alt="Survey Form UI" class="project-ui-image"
+                                    loading="lazy">
+
+                            </div>
+
+                            <div class="project-content">
+
+                                <span class="project-number">
+                                    01
+                                </span>
+
+                                <h3 class="project-title">
+                                    Survey Form Project
+                                </h3>
+
+                                <p class="project-description">
+
+                                    Beginner-friendly survey form project using validation, character counters, and
+                                    real-time DOM interaction.
+
+                                </p>
+
+                                <div class="project-tags">
+
+                                    <span class="custom-badge">
+                                        HTML5
+                                    </span>
+
+                                    <span class="custom-badge">
+                                        CSS3
+                                    </span>
+
+                                    <span class="custom-badge">
+                                        JavaScript
+                                    </span>
+
+                                </div>
+
+                                <a href="https://github.com/fazal305" target="_blank" class="project-link">
+                                    View Project
+                                </a>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                    <!-- Project 2 -->
+
+                    <div class="col-lg-6 project-item" data-category="javascript ui">
+
+                        <article class="project-card">
+
+                            <div class="project-image">
+
+                                <img src="images/dice-coin-ui.png" alt="Dice Coin Simulator UI" class="project-ui-image"
+                                    loading="lazy">
+
+                            </div>
+
+                            <div class="project-content">
+
+                                <span class="project-number">
+                                    02
+                                </span>
+
+                                <h3 class="project-title">
+                                    Dice & Coin Simulator
+                                </h3>
+
+                                <p class="project-description">
+
+                                    Interactive simulator using Math.random(), live stats tracking, state management,
+                                    and CSS-generated dice faces.
+
+                                </p>
+
+                                <div class="project-tags">
+
+                                    <span class="custom-badge">
+                                        JavaScript
+                                    </span>
+
+                                    <span class="custom-badge">
+                                        DOM
+                                    </span>
+
+                                    <span class="custom-badge">
+                                        UI
+                                    </span>
+
+                                </div>
+
+                                <a href="https://github.com/fazal305" target="_blank" class="project-link">
+                                    View Project
+                                </a>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Bootstrap Project -->
+
+        <div class="row g-4 mt-1">
+
+            <div class="col-lg-6 project-item" data-category="bootstrap ui">
+
+                <article class="project-card">
+
+                    <div class="project-image">
+
+                        <img src="images/bootstrap-showcase-ui.png" alt="Bootstrap Showcase UI" class="project-ui-image"
+                            loading="lazy">
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <span class="project-number">
+                            03
+                        </span>
+
+                        <h3 class="project-title">
+                            Bootstrap DevStack Showcase
+                        </h3>
+
+                        <p class="project-description">
+
+                            Responsive Bootstrap showcase page featuring navbars, modals, cards, alerts, progress bars,
+                            and utility classes.
+
+                        </p>
+
+                        <div class="project-tags">
+
+                            <span class="custom-badge">
+                                Bootstrap 5
+                            </span>
+
+                            <span class="custom-badge">
+                                Responsive UI
+                            </span>
+
+                            <span class="custom-badge">
+                                Components
+                            </span>
+
+                        </div>
+
+                        <a href="https://github.com/fazal305" target="_blank" class="project-link">
+                            View Project
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+        </div>
+
+        </section>
+
+        <!-- Desktop Projects Section -->
+
+        <section class="desktop-projects-section reveal-section" id="desktop-projects">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        02B · DESKTOP & SCRIPTING
+                    </p>
+
+                    <h2 class="section-title">
+                        Logic-driven projects beyond the browser.
+                    </h2>
+
+                </div>
+
+                <div class="row g-4">
+
+                    <!-- VB.NET -->
+
+                    <div class="col-lg-6">
+
+                        <article class="featured-project-card">
+
+                            <span class="custom-badge">
+                                VB.NET
+                            </span>
+
+                            <h3>
+                                Data Structures Collection
+                            </h3>
+
+                            <p>
+
+                                Queue systems, linked lists, enums, circular queues, and beginner-friendly VB.NET
+                                algorithm practice.
+
+                            </p>
+
+                            <pre><code>Dim queue As New Queue
+queue.Enqueue("Ali")</code></pre>
+
+                        </article>
+
+                    </div>
+
+                    <!-- Python -->
+
+                    <div class="col-lg-6">
+
+                        <article class="featured-project-card">
+
+                            <span class="custom-badge">
+                                Python
+                            </span>
+
+                            <h3>
+                                Python Learning Scripts
+                            </h3>
+
+                            <p>
+
+                                Beginner scripting exercises focused on loops, arrays, functions, and automation
+                                thinking.
+
+                            </p>
+
+                            <pre><code>numbers = [1, 2, 3]
+
+for number in numbers:
+    print(number)</code></pre>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Skills Section -->
+
+        <section class="skills-section reveal-section" id="skills">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        03 · SKILLS
+                    </p>
+
+                    <h2 class="section-title">
+                        Technologies I am learning and using.
+                    </h2>
+
+                </div>
+
+                <!-- Skill cloud -->
+
+                <div class="skills-cloud">
+
+                    <span class="skill-word huge">
+                        JavaScript
+                    </span>
+
+                    <span class="skill-word big">
+                        HTML5
+                    </span>
+
+                    <span class="skill-word medium">
+                        CSS3
+                    </span>
+
+                    <span class="skill-word medium">
+                        Bootstrap 5
+                    </span>
+
+                    <span class="skill-word small">
+                        jQuery
+                    </span>
+
+                    <span class="skill-word big">
+                        VB.NET
+                    </span>
+
+                    <span class="skill-word small">
+                        Firebase
+                    </span>
+
+                </div>
+
+                <!-- Skill cards -->
+
+                <div class="row g-4 mt-5">
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="skill-group-card">
+
+                            <h3>
+                                Languages
+                            </h3>
+
+                            <p>
+                                HTML5, CSS3, JavaScript, VB.NET, Python
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="skill-group-card">
+
+                            <h3>
+                                Libraries
+                            </h3>
+
+                            <p>
+                                Bootstrap 5, jQuery
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="skill-group-card">
+
+                            <h3>
+                                Concepts
+                            </h3>
+
+                            <p>
+                                DOM manipulation, responsive design, dashboards, forms
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="skill-group-card">
+
+                            <h3>
+                                Tools
+                            </h3>
+
+                            <p>
+                                Firebase, GitHub, Excel, VS Code
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Contact Section -->
+
+        <section class="contact-section reveal-section" id="contact">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        04 · CONTACT
+                    </p>
+
+                    <h2 class="section-title">
+                        Let's build something real.
+                    </h2>
+
+                </div>
+
+                <div class="contact-layout">
+
+                    <!-- Left -->
+
+                    <div class="contact-left">
+
+                        <p class="contact-text">
+
+                            I am open to junior frontend work, internships, and learning-focused collaborations.
+
+                        </p>
+
+                        <div class="email-row">
+
+                            <a href="mailto:fazalabbas2002@gmail.com" class="contact-email">
+                                fazalabbas2002@gmail.com
+                            </a>
+
+                            <button class="copy-email-btn" id="copyEmailBtn">
+                                Copy Email
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Contact form -->
+
+                    <form class="contact-form" id="contactForm">
+
+                        <input type="text" id="userName" placeholder="Your name">
+
+                        <input type="email" id="userEmail" placeholder="Your email">
+
+                        <textarea id="userMessage" rows="6" placeholder="Your message"></textarea>
+
+                        <button type="submit" class="primary-btn">
+                            Send Message
+                        </button>
+
+                        <p class="form-message" id="formMessage"></p>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+
+        <footer class="portfolio-footer">
+
+            <div class="container footer-layout">
+
+                <p class="footer-text">
+
+                    © 2026 Fazal Abbas — Built with HTML, CSS, JavaScript, Bootstrap & jQuery.
+
+                </p>
+
+                <a href="#home" class="back-to-top">
+
+                    Back to Top ↑
+
+                </a>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery -->
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Firebase -->
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+    <!-- External JS -->
+
+    <script src="portfolio-script.js"></script>
+
+</body>
+
+</html>

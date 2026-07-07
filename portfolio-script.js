@@ -1,391 +1,306 @@
-// Navbar blur effect
-
-const navbar = document.querySelector(".custom-navbar");
-
-window.addEventListener("scroll", function () {
-
-    if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-    }
-
-    else {
-        navbar.classList.remove("scrolled");
-    }
-
-});
-
-// Open to work banner
-
-const hiringBanner = document.getElementById("hiringBanner");
-
+const siteHeader = document.getElementById("siteHeader");
+const availabilityBanner = document.getElementById("availabilityBanner");
 const closeBannerBtn = document.getElementById("closeBannerBtn");
-
-if (sessionStorage.getItem("bannerClosed") === "true") {
-
-    if (hiringBanner) {
-        hiringBanner.style.display = "none";
-    }
-
-    if (navbar) {
-        navbar.style.top = "0";
-    }
-
-}
-
-if (closeBannerBtn) {
-
-    closeBannerBtn.addEventListener("click", function () {
-
-        hiringBanner.style.display = "none";
-
-        sessionStorage.setItem("bannerClosed", "true");
-
-        navbar.style.top = "0";
-
-    });
-
-}
-
-// Page loader
-
-window.addEventListener("load", function () {
-
-    const pageLoader = document.getElementById("pageLoader");
-
-    if (pageLoader) {
-        pageLoader.classList.add("hide-loader");
-    }
-
-});
-
-// Typewriter effect
-
+const navToggle = document.getElementById("navToggle");
+const navLinks = document.getElementById("navLinks");
+const pageLoader = document.getElementById("pageLoader");
+const scrollProgressBar = document.getElementById("scrollProgressBar");
 const typewriterText = document.getElementById("typewriterText");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectItems = document.querySelectorAll(".project-item");
+const copyEmailBtn = document.getElementById("copyEmailBtn");
+const contactForm = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
+const counters = document.querySelectorAll(".counter");
+const revealSections = document.querySelectorAll(".reveal-section");
+const navAnchorLinks = document.querySelectorAll(".nav-link");
 
 const typewriterWords = [
     "Frontend Developer",
     "UI Builder",
-    "VB.NET Developer",
-    "Python Learner",
-    "Beginner Who Ships"
+    "JavaScript Learner",
+    "Firebase Builder",
+    "Project Shipper"
 ];
 
 let wordIndex = 0;
 let letterIndex = 0;
 let isDeleting = false;
+let countersStarted = false;
 
-function typeWriter() {
+function initPortfolio() {
+    restoreBannerState();
+    bindEvents();
+    startTypewriter();
+    observeRevealSections();
+    observeCounters();
+    updateHeaderState();
+    updateScrollProgress();
+    updateActiveNavLink();
+}
 
-    if (!typewriterText) {
-        return;
+function bindEvents() {
+    window.addEventListener("load", hidePageLoader);
+    window.addEventListener("scroll", handleScroll);
+
+    if (closeBannerBtn) {
+        closeBannerBtn.addEventListener("click", closeAvailabilityBanner);
     }
+
+    if (navToggle) {
+        navToggle.addEventListener("click", toggleNav);
+    }
+
+    navAnchorLinks.forEach(function (link) {
+        link.addEventListener("click", closeNav);
+    });
+
+    filterButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            filterProjects(button);
+        });
+    });
+
+    if (copyEmailBtn) {
+        copyEmailBtn.addEventListener("click", copyEmailAddress);
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener("submit", handleContactSubmit);
+    }
+}
+
+function hidePageLoader() {
+    if (pageLoader) {
+        pageLoader.classList.add("hide-loader");
+    }
+}
+
+function restoreBannerState() {
+    if (sessionStorage.getItem("portfolioBannerClosed") === "true") {
+        closeAvailabilityBanner(false);
+    }
+}
+
+function closeAvailabilityBanner(shouldSave = true) {
+    if (availabilityBanner) {
+        availabilityBanner.style.display = "none";
+    }
+
+    if (siteHeader) {
+        siteHeader.classList.add("banner-hidden");
+    }
+
+    if (shouldSave) {
+        sessionStorage.setItem("portfolioBannerClosed", "true");
+    }
+}
+
+function toggleNav() {
+    const isOpen = navLinks.classList.toggle("show");
+
+    document.body.classList.toggle("nav-open", isOpen);
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+}
+
+function closeNav() {
+    navLinks.classList.remove("show");
+    document.body.classList.remove("nav-open");
+    navToggle.setAttribute("aria-expanded", "false");
+}
+
+function handleScroll() {
+    updateHeaderState();
+    updateScrollProgress();
+    updateActiveNavLink();
+}
+
+function updateHeaderState() {
+    if (!siteHeader) return;
+
+    siteHeader.classList.toggle("scrolled", window.scrollY > 24);
+}
+
+function updateScrollProgress() {
+    if (!scrollProgressBar) return;
+
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+
+    scrollProgressBar.style.width = scrollPercent + "%";
+}
+
+function startTypewriter() {
+    if (!typewriterText) return;
 
     const currentWord = typewriterWords[wordIndex];
 
-    if (isDeleting === false) {
-
-        typewriterText.textContent = currentWord.substring(0, letterIndex + 1);
-
-        letterIndex++;
+    if (!isDeleting) {
+        typewriterText.textContent = currentWord.slice(0, letterIndex + 1);
+        letterIndex += 1;
 
         if (letterIndex === currentWord.length) {
-
             isDeleting = true;
-
-            setTimeout(typeWriter, 1200);
-
+            setTimeout(startTypewriter, 1100);
             return;
         }
-
-    }
-
-    else {
-
-        typewriterText.textContent = currentWord.substring(0, letterIndex - 1);
-
-        letterIndex--;
+    } else {
+        typewriterText.textContent = currentWord.slice(0, letterIndex - 1);
+        letterIndex -= 1;
 
         if (letterIndex === 0) {
-
             isDeleting = false;
-
-            wordIndex++;
-
-            if (wordIndex === typewriterWords.length) {
-                wordIndex = 0;
-            }
-
+            wordIndex = (wordIndex + 1) % typewriterWords.length;
         }
-
     }
 
-    setTimeout(typeWriter, isDeleting ? 60 : 100);
-
+    setTimeout(startTypewriter, isDeleting ? 54 : 88);
 }
 
-typeWriter();
+function filterProjects(activeButton) {
+    const filterValue = activeButton.dataset.filter;
 
-// Scroll progress bar
+    filterButtons.forEach(function (button) {
+        button.classList.toggle("active-filter", button === activeButton);
+    });
 
-const scrollProgressBar = document.getElementById("scrollProgressBar");
+    projectItems.forEach(function (project) {
+        const categories = project.dataset.category || "";
+        const shouldShow = filterValue === "all" || categories.includes(filterValue);
 
-window.addEventListener("scroll", function () {
+        project.classList.toggle("is-hidden", !shouldShow);
+    });
+}
 
-    if (!scrollProgressBar) {
+async function copyEmailAddress() {
+    const email = "fazalabbas2002@gmail.com";
+
+    try {
+        await navigator.clipboard.writeText(email);
+        copyEmailBtn.textContent = "Copied";
+    } catch (error) {
+        copyEmailBtn.textContent = email;
+    }
+
+    setTimeout(function () {
+        copyEmailBtn.textContent = "Copy Email";
+    }, 1600);
+}
+
+function handleContactSubmit(event) {
+    event.preventDefault();
+
+    const userName = document.getElementById("userName").value.trim();
+    const userEmail = document.getElementById("userEmail").value.trim();
+    const userMessage = document.getElementById("userMessage").value.trim();
+
+    formMessage.classList.remove("error");
+
+    if (!userName || !userEmail || !userMessage) {
+        formMessage.textContent = "Please fill in all fields first.";
+        formMessage.classList.add("error");
         return;
     }
 
-    let scrollTop = window.scrollY;
-
-    let pageHeight = document.documentElement.scrollHeight - window.innerHeight;
-
-    let scrollPercent = (scrollTop / pageHeight) * 100;
-
-    scrollProgressBar.style.width = scrollPercent + "%";
-
-});
-
-// Project filter
-
-const filterButtons = document.querySelectorAll(".filter-btn");
-
-const projectItems = document.querySelectorAll(".project-item");
-
-filterButtons.forEach(function (button) {
-
-    button.addEventListener("click", function () {
-
-        filterButtons.forEach(function (btn) {
-            btn.classList.remove("active-filter");
-        });
-
-        button.classList.add("active-filter");
-
-        const filterValue = button.getAttribute("data-filter");
-
-        projectItems.forEach(function (project) {
-
-            const category = project.getAttribute("data-category");
-
-            if (filterValue === "all") {
-                project.style.display = "block";
-            }
-
-            else if (category.includes(filterValue)) {
-                project.style.display = "block";
-            }
-
-            else {
-                project.style.display = "none";
-            }
-
-        });
-
-    });
-
-});
-
-// jQuery project hover effect
-
-$(".project-card").hover(
-
-    function () {
-        $(this).css("transform", "translateY(-10px)");
-    },
-
-    function () {
-        $(this).css("transform", "translateY(0)");
+    if (!isValidEmail(userEmail)) {
+        formMessage.textContent = "Please enter a valid email address.";
+        formMessage.classList.add("error");
+        return;
     }
 
-);
+    const subject = encodeURIComponent("Portfolio message from " + userName);
+    const body = encodeURIComponent(userMessage + "\n\nFrom: " + userName + "\nEmail: " + userEmail);
 
-// Copy email button
-
-const copyEmailBtn = document.getElementById("copyEmailBtn");
-
-if (copyEmailBtn) {
-
-    copyEmailBtn.addEventListener("click", function () {
-
-        navigator.clipboard.writeText("fazalabbas2002@gmail.com");
-
-        copyEmailBtn.textContent = "Copied! ✓";
-
-        setTimeout(function () {
-            copyEmailBtn.textContent = "Copy Email";
-        }, 2000);
-
-    });
-
+    formMessage.textContent = "Opening your email app...";
+    window.location.href = "mailto:fazalabbas2002@gmail.com?subject=" + subject + "&body=" + body;
+    contactForm.reset();
 }
 
-// Contact form validation
-
-const contactForm = document.getElementById("contactForm");
-
-const formMessage = document.getElementById("formMessage");
-
-if (contactForm) {
-
-    contactForm.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        const userName = document.getElementById("userName").value.trim();
-
-        const userEmail = document.getElementById("userEmail").value.trim();
-
-        const userMessage = document.getElementById("userMessage").value.trim();
-
-        if (userName === "" || userEmail === "" || userMessage === "") {
-
-            formMessage.textContent = "Please fill all fields.";
-
-            return;
-        }
-
-        formMessage.textContent = "Message ready. Firebase saving will be connected next.";
-
-        contactForm.reset();
-
-    });
-
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// Scroll reveal animation
+function observeRevealSections() {
+    if (!("IntersectionObserver" in window)) {
+        revealSections.forEach(function (section) {
+            section.classList.add("show-section");
+        });
+        return;
+    }
 
-const revealSections = document.querySelectorAll(".reveal-section");
+    const revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show-section");
+            }
+        });
+    }, { threshold: 0.14 });
 
-const revealObserver = new IntersectionObserver(function (entries) {
-
-    entries.forEach(function (entry) {
-
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show-section");
-        }
-
+    revealSections.forEach(function (section) {
+        revealObserver.observe(section);
     });
+}
 
-}, {
-    threshold: 0.15
-});
+function observeCounters() {
+    const aboutSection = document.querySelector(".about-section");
 
-revealSections.forEach(function (section) {
-    revealObserver.observe(section);
-});
+    if (!aboutSection || !("IntersectionObserver" in window)) {
+        startCounters();
+        return;
+    }
 
-// Active navbar links
+    const counterObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                startCounters();
+            }
+        });
+    }, { threshold: 0.35 });
 
-const sections = document.querySelectorAll("section");
-
-const navLinks = document.querySelectorAll(".custom-nav-link");
-
-window.addEventListener("scroll", function () {
-
-    let currentSection = "";
-
-    sections.forEach(function (section) {
-
-        const sectionTop = section.offsetTop - 160;
-
-        const sectionHeight = section.clientHeight;
-
-        if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-            currentSection = section.getAttribute("id");
-        }
-
-    });
-
-    navLinks.forEach(function (link) {
-
-        link.classList.remove("active-link");
-
-        if (link.getAttribute("href") === "#" + currentSection) {
-            link.classList.add("active-link");
-        }
-
-    });
-
-});
-
-// Animated counters
-
-const counters = document.querySelectorAll(".counter");
-
-let countersStarted = false;
+    counterObserver.observe(aboutSection);
+}
 
 function startCounters() {
-
-    if (countersStarted === true) {
-        return;
-    }
+    if (countersStarted) return;
 
     counters.forEach(function (counter) {
+        const target = Number(counter.dataset.target);
+        const duration = 900;
+        const startTime = performance.now();
 
-        const target = Number(counter.getAttribute("data-target"));
+        function updateCounter(now) {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const currentValue = Math.floor(progress * target);
 
-        let currentNumber = 0;
+            counter.textContent = target === 100 ? currentValue + "%" : currentValue + "+";
 
-        const increment = target / 60;
-
-        const counterInterval = setInterval(function () {
-
-            currentNumber += increment;
-
-            if (currentNumber >= target) {
-
-                currentNumber = target;
-
-                clearInterval(counterInterval);
-
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
             }
+        }
 
-            // Add plus sign or percent
-
-            if (target === 100) {
-
-                counter.textContent =
-                    Math.floor(currentNumber) + "%";
-
-            }
-
-            else {
-
-                counter.textContent =
-                    Math.floor(currentNumber) + "+";
-
-            }
-
-        }, 25);
-
+        requestAnimationFrame(updateCounter);
     });
 
     countersStarted = true;
-
 }
 
-// Detect about section
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll("main section[id]");
+    let currentSection = "";
 
-const aboutSection = document.querySelector(".about-section");
+    sections.forEach(function (section) {
+        const sectionTop = section.offsetTop - 180;
+        const sectionBottom = sectionTop + section.offsetHeight;
 
-const counterObserver = new IntersectionObserver(function (entries) {
-
-    entries.forEach(function (entry) {
-
-        if (entry.isIntersecting) {
-
-            startCounters();
-
+        if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+            currentSection = section.id;
         }
-
     });
 
-}, {
-    threshold: 0.4
-});
-
-if (aboutSection) {
-
-    counterObserver.observe(aboutSection);
-
+    navAnchorLinks.forEach(function (link) {
+        link.classList.toggle("active-link", link.getAttribute("href") === "#" + currentSection);
+    });
 }
+
+document.addEventListener("DOMContentLoaded", initPortfolio);
